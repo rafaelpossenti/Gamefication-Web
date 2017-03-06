@@ -1,0 +1,7 @@
+### CI snapshot builds
+# master version of jbosstools-earlyaccess.properties should be edited here, so the discovery job can fetch it: http://download.jboss.org/jbosstools/neon/snapshots/updates/earlyaccess.properties/master/jbosstools-earlyaccess.properties
+jboss.discovery.directory.url|jbosstools|4.4.4.AM1=http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-discovery.earlyaccess_master/latest/all/repo/jbosstools-directory.xml
+jboss.discovery.site.url|jbosstools|4.4.4.AM1=http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/
+jboss.discovery.earlyaccess.site.url|jbosstools|4.4.4.AM1=http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-discovery.earlyaccess_master/latest/all/repo/
+jboss.discovery.earlyaccess.list.url|jbosstools|4.4.4.AM1=http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-discovery.earlyaccess_master/latest/all/repo/jbosstools-earlyaccess.properties
+jboss.central.webpage.url|jbosstools|4.4.4.AM1=https://repository.jboss.org/ne

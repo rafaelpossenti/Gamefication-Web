@@ -1,0 +1,48 @@
+package model;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ConexaoDAO {
+
+	private static final String DRIVER = "org.postgresql.Driver";
+	private static final String DBURL = "jdbc:postgresql://localhost:5432/postgres";
+	private static final String USER = "postgres";
+	private static final String SENHA = "root";
+	private static Connection conn = null;
+
+	
+	public static void main(String ...args){
+		ConexaoDAO dao = new ConexaoDAO();
+		createConnection();
+		dao.Close(); 
+	}
+	
+	String connectionUrl = "jdbc:postgresql://localhost:5432;"
+			+ "databaseName=postgres;user=postgres;password=root";
+
+	public static Connection createConnection() {
+
+		try {
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(DBURL, USER, SENHA);
+			System.out.println("Conexão OK!");
+		} catch (ClassNotFoundException ex) {
+			System.out.println("Problemas no Driver de Conexão");
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		return conn;
+	}
+
+	public void Close() {
+		try {
+			conn.close();
+		} catch (SQLException ex) {
+			Logger.getLogger(ConexaoDAO.class.getName()).log(Level.SEVERE, null, ex);
+		}
+	}
+}

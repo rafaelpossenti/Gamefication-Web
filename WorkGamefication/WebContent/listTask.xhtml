@@ -1,0 +1,156 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+<ui:composition template="/template/menu.xhtml">
+         
+    <ui:define name="javascript">
+		<title>Funcionarios</title>
+    	<style>
+     		.cssColumn1 {
+				width: 150px;
+				}
+			.cssColumn2 {
+				Width: 450px;
+				}
+     	</style>  	
+	</ui:define>
+         
+    <ui:define name="conteudo">
+
+		<h:form id="form">
+			<p:dataTable var="task" value="#{taskManagedBean.taskList}" scrollable="true" 
+						 scrollHeight="300"  selectionMode="single" rowKey="#{task.name}"
+             			 selection="#{taskManagedBean.currentTask}" 
+             			 >
+			<p:ajax event="rowSelect"  update=":form:taskDetail" oncomplete="PF('taskDialog').show()"/>
+			
+		        <p:column  sortBy="#{task.name}"   filterBy="#{task.name}">
+					<f:facet name="header">
+						<h:outputText value="Tarefa" />
+					</f:facet> 
+					<h:outputText value="#{task.name}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Dificuldade" />
+					</f:facet>
+					<h:outputText value="#{task.difficulty}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Horas" />
+					</f:facet>
+					<h:outputText value="#{task.estimateHour}" />
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Pontos" />
+					</f:facet>
+					<h:outputText value="#{task.point}" />
+				</p:column>
+				
+				<p:column sortBy="#{task.project.name}"   filterBy="#{task.project.name}">
+					<f:facet name="header">
+						<h:outputText value="Projeto" />
+					</f:facet>
+					<h:outputText value="#{task.project.name}" />
+				</p:column>
+				
+				<p:column sortBy="#{task.staff.name}"   filterBy="#{task.staff.name}">
+					
+					<f:facet name="header" >
+						<h:outputText value="Funcionario" />
+					</f:facet>
+					<h:outputText value="#{task.staff.name}" />
+				</p:column>
+				
+				<p:column headerText="Status" >
+					
+				
+            		<f:facet name="header" >
+            			<h:outputText value="Aprovada" />
+					</f:facet>
+					<h:outputText value="#{task.alive ? 'Aprovada' : 'Pendente' }" />
+				</p:column>
+                
+            </p:dataTable>
+
+			<br/>        
+
+			<p:dialog header="Detalhes Da Tarefa" widgetVar="taskDialog" modal="true"
+					  showEffect="fade" hideEffect="fade" resizable="false"  width="500">
+				<p:outputPanel id="taskDetail" style="text-align:center;"  width="500">
+					<p:panelGrid columns="2"
+						columnClasses="label,value"
+						rendered="#{not empty taskManagedBean.currentTask}">
+						
+					<h:outputText value="Nome:" />
+                	<h:outputText value="#{taskManagedBean.currentTask.name}" />
+						
+					<h:outputText    value="Descrição:" />
+                	<p:inputTextarea value="#{taskManagedBean.currentTask.description}" 
+                                     rows="7" cols="50"
+                                     disabled="#{taskManagedBean.currentTask.alive}"/>
+						
+					<h:outputText value="Dificuldade:" />
+                	<h:outputText value="#{taskManagedBean.currentTask.difficulty}" />
+						
+					<h:outputText value="Horas Estimadas:" />
+                	<h:outputText value="#{taskManagedBean.currentTask.estimateHour}" />
+                	    
+                	<h:outputText value="Pontos:" />
+                	<h:outputText value="#{taskManagedBean.currentTask.point}" />
+		
+					<h:outputText value="Projeto" />
+					<h:outputText value="#{taskManagedBean.currentTask.project.name}" />
+			
+					<h:outputText value="Funcionario" />
+					<h:outputText value="#{taskManagedBean.currentTask.staff.name}" />
+					
+					<h:outputText value="Funcionario" />
+					<h:outputText value="#{taskManagedBean.currentTask.alive}" />
+					
+					</p:panelGrid>
+					
+					<br/>
+					
+					<p:commandButton value="Salvar" icon="fa fa-fw fa-save" onclick="PF('staffDialog').hide()"
+					     actionListener="#{taskManagedBean.save}" onsuccess="location.reload(); " disabled="#{taskManagedBean.currentTask.alive}"/>
+					
+					<p:commandButton 
+                    value="Aprovar"  icon="fa fa-fw fa-save" onclick="PF('staffDialog').hide()"
+                    actionListener="#{taskManagedBean.Finished}" onsuccess="location.reload();" disabled="#{taskManagedBean.currentTask.alive}"/>
+				    
+				    <p:commandButton value="Excluir" icon="fa fa-fw fa-save"
+				    	actionListener="#{taskManagedBean.delete}" onclick="PF('taskDialog').hide()" 
+						onsuccess="location.reload();" />
+					
+				</p:outputPanel>
+			</p:dialog>
+
+
+             
+			<div class="ui-g">                  
+				<div class="ui-g-6">
+					
+				</div>
+
+				<div class="ui-g-6">
+					
+
+				</div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

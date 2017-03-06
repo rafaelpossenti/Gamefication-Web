@@ -1,0 +1,5 @@
+package ejb;
+@Stateless
+public class ClassEJB {
+
+}

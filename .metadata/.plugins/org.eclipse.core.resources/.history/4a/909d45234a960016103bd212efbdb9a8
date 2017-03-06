@@ -1,0 +1,116 @@
+package model;
+
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
+import control.DataGridView;
+
+@ManagedBean
+@ApplicationScoped
+public class Staff {
+	
+	private String idStaff;
+	private String idTeam;
+    private String name;
+	private int    age ;
+	private String picture;
+	/*private List<Integer> skill = new ArrayList<Integer>();*/
+	private int level;
+    private FacesContext context;
+	
+	
+    public Staff(){
+    	super();
+    	System.out.println("neste ponto");
+    }
+    
+	public Staff(String idStaff, String idTeam, String name, String picture /*, List<Integer> skill,*/ , int level) {
+		this.idStaff  = idStaff;
+		this.idTeam   = idTeam;
+		this.name     = name;
+		this.picture  = picture;
+		System.out.println("name" + name);
+		/*this.skill = skill;*/
+	}
+	
+
+	public void saveStaff() {
+		//StaffService service = new StaffService();
+		//service.createStaffs(this);
+		//System.out.println("this,name" +  this.name);
+		context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Registro Salvo!", "Nome: " + getName()));
+	    
+	
+	}
+
+	public void simplesParaTeste(String a, String b, String email) throws RuntimeException{
+		if(email.equals("rafael-hotmail.com"))  
+		throw new RuntimeException("erro"); 
+		
+	}
+	
+	
+	public String getIdStaff() {
+		return idStaff;
+	}
+
+	public void setIdStaff(String idStaff) {
+		this.idStaff = idStaff;
+	}
+
+	public String getIdTeam() {
+		return idTeam;
+	}
+
+	public void setIdTeam(String idTeam) {
+		this.idTeam = idTeam;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+/*
+	public List<Integer> getSkill() {
+		return skill;
+	}
+
+	public void setSkill(List<Integer> skill) {
+		this.skill = skill;
+	}
+*/
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	
+	
+}

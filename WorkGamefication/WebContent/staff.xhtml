@@ -1,0 +1,126 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<ui:composition template="/template/menu.xhtml">
+
+<ui:define name="javascript">
+	<title>Funcionario</title>
+	<script type="text/javascript">
+    
+	</script>
+</ui:define>
+
+<ui:define name="conteudo">
+	<h:form id="func" >
+		
+		<p:fieldset legend="Funcionario">
+			
+			<p:layout style="width:1300px;height:400px">
+            	<p:layoutUnit position="west" size="700">	
+                    
+                    <h:panelGrid columns="2" cellpadding="5">
+						
+						<p:outputLabel for="idname" value="Nome:" />
+						<p:inputText 
+						    id="idname"  
+						    value="#{staffManagedBean.currentStaff.name}" 
+						    required="true" 
+							requiredMessage="Nome obrigatório"
+                    		validatorMessage="Nome não pode ser superior a 25">
+                    		<f:validateLength maximum="25"/>
+                    		<f:ajax event="blur" render="messages" />
+                        </p:inputText> 
+						
+						<p:outputLabel for="descriptionStaff" value="Descrição:" />
+						<p:inputTextarea rows="5" cols="50" id="descriptionStaff"
+							value="#{staffManagedBean.currentStaff.description}"
+							required="true" />
+						
+						<p:outputLabel for="cargo" value="Função:" />
+					   	<p:selectOneMenu id="cargo" value="#{staffManagedBean.currentStaff.occupation}"
+							style="width:190px"  >
+							<f:selectItem itemLabel="Estagiario" itemValue="Estagiario" />
+							<f:selectItem itemLabel="Desenvolvedor" itemValue="Desenvolvedor" />
+							<f:selectItem itemLabel="Analista" itemValue="Analista" />
+							<f:selectItem itemLabel="QA" itemValue="QA" />
+							<f:selectItem itemLabel="Engenheiro" itemValue="Engenheiro" />
+						  	<f:selectItem itemLabel="Lider" itemValue="Lider" />
+						</p:selectOneMenu>
+
+						<p:outputLabel for="age" value="Idade:" /> 
+						<p:inputText 
+						    id="age"  
+						    value="#{staffManagedBean.currentStaff.age}"
+						    required="true" size="3"> 
+						</p:inputText>  
+						
+						<p:outputLabel for="sex" value="Sexo:" />
+					   	<p:selectOneMenu id="sex" value="#{staffManagedBean.currentStaff.sex}"
+							style="width:190px">
+							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+						</p:selectOneMenu>
+						
+						
+					</h:panelGrid>
+				</p:layoutUnit>
+				
+				
+				<p:layoutUnit position="center" size="600" >
+					<h:panelGrid columns="2" cellpadding="5">    
+						
+						<p:outputLabel for="email" value="E-mail:" />
+						<p:inputText 
+						    id="email"  
+						    value="#{staffManagedBean.currentStaff.email}"
+						    required = "true"
+						    size="38"> 
+						</p:inputText>
+						
+						<p:outputLabel for="phone" value="Telefone:" /> 
+						<p:inputText 
+						    id="phone"  
+						    value="#{staffManagedBean.currentStaff.phone}"
+						    size="38"> 
+						</p:inputText> 
+						
+						<p:outputLabel for="address" value="Endereço:" /> 
+						<p:inputText 
+						    id="address"  
+						    value="#{staffManagedBean.currentStaff.address}"
+						    size="38"> 
+						</p:inputText>
+						
+						  
+					</h:panelGrid>	
+				</p:layoutUnit>       
+				
+				
+				<p:layoutUnit position="south" size="60">
+                	<h:panelGrid  columns="3">
+                    	<p:commandButton 
+                    		value="Salvar e Novo"  icon="fa fa-fw fa-save" 
+				     		actionListener="#{staffManagedBean.saveAndNew}" update="func" />
+				    	<p:commandButton 
+				    		value="Salvar" icon="fa fa-fw fa-save"
+							actionListener="#{staffManagedBean.save}" 		update="func"  />
+						<p:commandButton 
+							value="Cancelar"   icon="fa fa-fw fa-backward"  
+							onsuccess="location.reload(); " />
+					</h:panelGrid>
+				</p:layoutUnit>       
+			</p:layout>       
+		
+			<p:messages id="messages" />
+			
+		</p:fieldset>	
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

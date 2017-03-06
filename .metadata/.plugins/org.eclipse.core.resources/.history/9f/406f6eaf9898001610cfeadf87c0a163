@@ -1,0 +1,39 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Tarefas</title>
+</h:head>
+
+
+
+<h:body>
+
+	<ui:composition template="/template/menu.xhtml">
+
+		<ui:define name="conteudo">
+			<h:form>
+				<h:dataTable value="#{taskManagedBean.TaskList}" var="task">
+					<h:column>
+						<f:facet name="header"> # </f:facet>
+					</h:commandLink>
+					</h:column>
+					<h:column>
+						<f:facet name="header">ID</f:facet>
+            			#{task.id}
+            		</h:column>
+					<h:column>
+						<f:facet name="header">NOME</f:facet>
+                        #{task.name}
+            		</h:column>
+				</h:dataTable>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

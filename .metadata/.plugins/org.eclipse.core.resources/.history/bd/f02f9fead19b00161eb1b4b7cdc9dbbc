@@ -1,0 +1,43 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Tarefa</title>
+</h:head>
+
+
+
+<h:body>
+
+	<ui:composition template="/template/menu.xhtml">
+
+		<ui:define name="conteudo">
+			<h:form>
+				<p:growl id="func" showDetail="true" sticky="true" />
+
+				<p:panel header="TAREFA">
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="name" value="TAREFA:" />
+						<p:inputText id="name" value="#{task.name}" required="true" size="50"/>
+						<p:outputLabel for="description" value="DESCRIÇÃO:" />
+						<p:inputTextarea rows="10" cols="50" id="description"  value="#{task.description}" required="true" />
+						
+						
+						<p:outputLabel for="point" value="PONTOS :" />
+						<p:inputText id="point" value="#{task.point}" required="true" />
+
+
+					</h:panelGrid>
+
+					<p:commandButton value="Save" 
+						update="func" />
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

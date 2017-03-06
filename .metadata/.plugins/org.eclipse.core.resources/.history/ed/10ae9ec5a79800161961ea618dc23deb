@@ -1,0 +1,59 @@
+package managedbeans;
+
+
+import java.util.List;
+
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+
+import ejb.GeneralRegister;
+import modelo.Task;
+
+@ManagedBean
+@SessionScoped
+public class TaskManagedBean {
+	
+	@EJB
+	private GeneralRegister taskEJB;
+	
+	private Task selectedTask; 
+	
+	public List<Task> getTaskList(){
+		return taskEJB.listTasks(); 
+	}
+	
+	public String generateSampleTask(){
+		taskEJB.createSampleTask();
+		return null;
+	}
+	
+	public Task getSelectedTask(){
+		return selectedTask;
+	}
+	
+	public void getSelectedTask(Task selectedTask){
+		this.selectedTask = selectedTask;
+	}
+	
+	public String update(){
+		taskEJB.findOrUpdate(selectedTask);
+		return "sampleTask";
+	}
+
+	public GeneralRegister getTaskEJB() {
+		return taskEJB;
+	}
+
+	public void setTaskEJB(GeneralRegister taskEJB) {
+		this.taskEJB = taskEJB;
+	}
+
+	public void setSelectedCustomer(Task selectedTask) {
+		this.selectedTask = selectedTask;
+	}
+	
+	
+	
+	
+}

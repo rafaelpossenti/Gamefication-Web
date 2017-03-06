@@ -1,0 +1,28 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+	new file:   .classpath
+	new file:   .project
+	new file:   .settings/org.eclipse.jdt.core.prefs
+	new file:   .settings/org.eclipse.jpt.core.prefs
+	new file:   .settings/org.eclipse.wst.common.component
+	new file:   .settings/org.eclipse.wst.common.project.facet.core.prefs.xml
+	new file:   .settings/org.eclipse.wst.common.project.facet.core.xml
+	new file:   build/classes/META-INF/MANIFEST.MF
+	new file:   build/classes/META-INF/glassfish-ejb-jar.xml
+	new file:   build/classes/META-INF/persistence.xml
+	new file:   build/classes/ejb/GeneralRegister.class
+	new file:   build/classes/modelo/Task.class
+	new file:   build/classes/util/JPAUtil.class
+	new file:   ejbModule/META-INF/MANIFEST.MF
+	new file:   ejbModule/META-INF/glassfish-ejb-jar.xml
+	new file:   ejbModule/META-INF/persistence.xml
+new file:   ejbModule/ejb/GeneralRegister.java
+	new file:   ejbModule/modelo/Task.java
+	new file:   ejbModule/util/JPAUtil.java
+#

@@ -1,0 +1,22 @@
+package ejb;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import modelo.Task;
+import util.JPAUtil;
+
+public class TaskEJB {
+	
+	
+	@PersistenceContext
+	private EntityManager em = new JPAUtil().getEntityManager();
+	
+	public List<Task> listTasks(){
+    	Query query = em.createNamedQuery("Task.findAll");
+        return  query.getResultList();	
+    }
+}

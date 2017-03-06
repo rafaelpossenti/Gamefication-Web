@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Tarefa</title>
+	
+</h:head>
+
+
+
+
+
+
+<h:body>
+
+
+
+	<ui:composition template="/template/menu.xhtml">
+	
+		<ui:define name="conteudo">
+
+			<h:form id="func">
+				<p:growl showDetail="true" sticky="true" />
+
+				
+
+					<p:panel header="TAREFA">
+
+                       <p:layout style="width:1300px;height:400px"> 
+
+						<p:layoutUnit position="west" size="700">
+
+							<h:panelGrid columns="2" cellpadding="5">
+
+								<p:outputLabel for="name" value="TAREFA:" />
+								<p:inputText id="name"
+									value="#{taskManagedBean.currentTask.name}" required="true"
+									size="48" />
+
+								<p:outputLabel for="description" value="DESCRIÇÃO:" />
+								<p:inputTextarea rows="10" cols="50" id="description"
+									value="#{taskManagedBean.currentTask.description}"
+									required="true" />
+
+								<p:outputLabel for="difficulty" value="Nivel de dificuldade:" />
+								<p:selectOneMenu id="difficulty"
+									value="#{taskManagedBean.currentTask.difficulty}"
+									style="width:190px">
+									<f:selectItem itemLabel="Fácil" itemValue="Fácil" />
+									<f:selectItem itemLabel="Moderado" itemValue="Moderado" />
+									<f:selectItem itemLabel="Complexo" itemValue="Complexo" />
+								</p:selectOneMenu>
+
+
+								<p:outputLabel for="estimateHour" value="Horas estimadas:" />
+								<p:inputText id="estimateHour"
+									value="#{taskManagedBean.currentTask.estimateHour}"
+									required="true">
+								</p:inputText>
+
+							</h:panelGrid>
+						</p:layoutUnit>
+
+						<p:layoutUnit position="center" size="350">
+							<h:panelGrid columns="2" cellpadding="5">
+								<p:outputLabel for="point" value="Pontos:" />
+								<p:knob id="point" value="#{taskManagedBean.currentTask.point}"
+									min="1" max="100" step="1" disabled="true" />
+							</h:panelGrid>
+						</p:layoutUnit>
+
+						<p:layoutUnit position="east" size="250">
+							<h:panelGrid columns="2" cellpadding="5">
+							
+							
+							<p:selectOneMenu  value="null"  var="staff" filter="true" filterMatchMode="contains" >
+							<f:selectItems value="#{staffManagedBean.staffList}" var="staff" itemLabel="#{staff.name}" itemValue="#{staff}" />
+									<!--
+									<p:column>
+									 	<p:graphicImage value="/images/CJ.jpg" width="40"/>
+									</p:column>
+									-->
+									<p:column>
+										#{staff.id} - #{staff.name}
+									</p:column>
+							
+							
+							</p:selectOneMenu>
+							
+							
+							</h:panelGrid>
+						</p:layoutUnit>
+
+                   
+                       </p:layout>   
+
+					</p:panel>
+
+				
+
+			</h:form>
+
+            <br/>
+            
+            
+            
+			<p:commandButton value="Salvar" 
+				actionListener="#{taskManagedBean.save}" update="func" />
+			<p:commandButton value="Cancelar"  onsuccess="location.reload(); "
+				 />
+			<p:commandButton value="Testar" onclick="calculatePoints()" 
+				 />                                            
+				 <input type="button" value="teste" onclick="calculatePoints()"> </input>
+             
+ 
+		</ui:define>
+        
+        <ui:define name="javascript">
+    <script type="text/javascript">
+    function calculatePoints(){
+		          
+    	var estimateHour = document.getElementById("estimateHour").value ; 
+    	var difficulty   = document.getElementById("difficulty").value; 
+
+    	alert(estimateHour);
+    	alert(difficulty);    
+    }
+    </script>  	
+	</ui:define>
+        
+
+	</ui:composition>
+
+
+
+<style>
+</style>
+
+
+</h:body>
+</html>

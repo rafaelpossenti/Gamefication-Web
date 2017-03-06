@@ -1,0 +1,135 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<ui:composition template="/template/menu.xhtml">
+
+	<ui:define name="javascript">
+		<title>Funcionario</title>
+		<f:facet name="first">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+			<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+			<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+			<title>primestrap</title>
+		</f:facet>
+
+		<f:facet name="middle">
+			<h:outputStylesheet name="lib/bootstrap/css/bootstrap.css" />
+
+			<script
+				src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
+
+			<h:outputScript name="lib/bootstrap/js/bootstrap.js" />
+		</f:facet>
+
+		<f:facet name="last">
+
+		</f:facet>
+
+		<style>
+.jumbotron {
+	background: #358CCE;
+	color: #FFF;
+	border-radius: 0px;
+}
+
+.jumbotron-sm {
+	padding-top: 24px;
+	padding-bottom: 24px;
+}
+
+.jumbotron small {
+	color: #FFF;
+}
+
+.h1 small {
+	font-size: 24px;
+}
+</style>
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<div class="jumbotron jumbotron-sm">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-lg-12">
+						<h1 class="h1">
+							Entre em contato 
+						</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="well well-sm">
+						<form>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="name"> Nome</label> <input type="text"
+											class="form-control" id="name" placeholder="informe um nome"
+											required="required" />
+									</div>
+									<div class="form-group">
+										<label for="email"> Email </label>
+										<div class="input-group">
+											<span class="input-group-addon"><span
+												class="glyphicon glyphicon-envelope"></span> </span> <input
+												type="email" class="form-control" id="email"
+												placeholder="informe um email" required="required" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="subject"> Assunto</label> <select id="subject"
+											name="subject" class="form-control" required="required">
+											<option value="na" selected="">Escolha um:</option>
+											<option value="service">Serviços gerais ao cliente</option>
+											<option value="suggestions">Sugestões</option>
+											<option value="product">Suporte ao produto</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="name"> Mensagem</label>
+										<textarea name="message" id="message" class="form-control"
+											rows="9" cols="25" required="required" placeholder="Mensagem"></textarea>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<button type="submit" class="btn btn-primary pull-right"
+										id="btnContactUs">Enviar Mensagem</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<form>
+						<legend>
+							<span class="glyphicon glyphicon-globe"></span> Sobre o Desenvolvedor
+						</legend>
+						<address>
+							<strong>Rafael Possenti</strong><br/> 
+									Joinville, SC <br/> <abbr title="Telefone"> P:</abbr>
+										(47) 9678 6648 
+						</address>
+						<address>
+							<a href="mailto:#">rafael_possenti@hotmail.com</a>
+						</address>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

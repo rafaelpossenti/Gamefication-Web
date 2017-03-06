@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	 
+	<ui:insert name="javascript">
+	
+	
+	</ui:insert>
+
+</h:head>
+
+<h:body>
+	<ui:insert name="cabecalho">
+		<h3 style="margin-top: 0"></h3>
+
+		<p:tabMenu activeIndex="#{param.i}"> 
+			<p:menuitem value="Projeto" outcome="project" icon="fa fa-fw fa-home">
+				<f:param name="i" value="0" />
+			</p:menuitem>
+			<p:menuitem value="Equipe" outcome="listStaff" icon="fa fa-fw fa-users">
+				<f:param name="i" value="1" />
+			</p:menuitem>
+			<p:menuitem value="Funcionario" outcome="staff" icon="fa fa-fw fa-user">
+				<f:param name="i" value="2" />
+			</p:menuitem>
+			<p:menuitem value="Tarefa" outcome="task" icon="fa fa-fw fa-wrench">
+				<f:param name="i" value="3" />
+			</p:menuitem>
+			<p:menuitem value="Dashboard" outcome="listTask.xhtml" icon="fa fa-fw fa-pie-chart">
+				<f:param name="i" value="4" />
+			</p:menuitem>
+			<p:menuitem value="Contato" outcome="contact" icon="fa fa-fw fa-weixin">
+				<f:param name="i" value="5" />
+			</p:menuitem>
+		</p:tabMenu>
+
+	</ui:insert>
+
+    <ui:insert name="conteudo">
+      Template
+    </ui:insert>
+    <ui:insert name="rodape">
+      
+    </ui:insert>
+
+
+</h:body>
+</html>

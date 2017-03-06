@@ -1,0 +1,3 @@
+#GlassFish 3
+#Wed Mar 01 22:20:55 BRT 2017
+org.eclipse.jst.jee.server\:EAR=c\:\\Program Files (x86)\\gf4\\glassfish\\domains\\domain1\\eclipseApps\\EAR

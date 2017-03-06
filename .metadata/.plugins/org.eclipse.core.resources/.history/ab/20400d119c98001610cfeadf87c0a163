@@ -1,0 +1,29 @@
+package managedbeans;
+
+import java.util.List;
+
+import javax.annotation.ManagedBean;
+import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
+
+import ejb.TaskEJB;
+import modelo.Task;
+
+@ManagedBean
+@SessionScoped
+public class TaskManagedBean {
+	
+	@EJB
+	private TaskEJB taskEJB;
+	
+	private Task selectedTask;
+	
+	public List<Task> getTaskList(){
+		System.out.println("AQUI foi");
+		return taskEJB.listTasks(); 
+	}
+
+	
+	
+	
+}

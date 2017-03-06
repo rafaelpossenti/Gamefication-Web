@@ -1,0 +1,51 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Funcionarios</title>
+</h:head>
+
+
+
+<h:body>
+
+	<ui:composition template="/template/menu.xhtml">
+
+		<ui:define name="conteudo">
+			<h:form>
+				<p:growl id="func" showDetail="true" sticky="true" />
+
+				<p:panel header="Funcionario">
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:outputLabel for="name" value="Nome:" />
+						<p:inputText id="name" value="#{staff.name}" required="true" />
+						<p:outputLabel for="function" value="Função:" />
+						<p:selectOneMenu id="functionId" value="staff.function}"
+							style="width:125px">
+							<f:selectItem itemLabel="Estagiario" itemValue="Estagiario" />
+							<f:selectItem itemLabel="Desenvolvedor" itemValue="Desenvolvedor" />
+							<f:selectItem itemLabel="Analista" itemValue="Analista" />
+							<f:selectItem itemLabel="QA" itemValue="QA" />
+						    <f:selectItem itemLabel="Engenheiro" itemValue="Engenheiro" />
+						    <f:selectItem itemLabel="Lider" itemValue="Lider" />
+						</p:selectOneMenu>
+
+						<p:outputLabel for="age" value="Idade:" />
+						<p:inputText id="age" value="#{staff.age}" required="true" />
+
+
+
+					</h:panelGrid>
+
+					<p:commandButton value="Save" actionListener="#{staff.saveStaff}"
+						update="func" />
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,96 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+
+<ui:composition template="/template/menu.xhtml">
+	<ui:define name="javascript">
+		<title>Projeto</title>
+
+		<script type="text/javascript">
+			function clearFields(){
+				document.getElementById("func:idname").value = "";
+				document.getElementById("func:description").value = "";
+				location.reload();
+			}
+    	</script>
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<h:form id="form">
+			<p:growl id="func" showDetail="true" sticky="true" />
+
+			<p:panel header="Projeto">
+
+				<p:layout style="width:1300px;height:400px">
+					<p:layoutUnit position="west" size="700">
+						<h:panelGrid columns="2" cellpadding="5">
+							<p:outputLabel for="idname" value="Nome:" />
+							<p:inputText id="idname"
+								value="#{projectManagedBean.currentProject.name}"
+								required="true" />
+
+							<p:outputLabel for="description" value="Descrição:" />
+							<p:inputTextarea rows="10" cols="50" id="description"
+								value="#{projectManagedBean.currentProject.description}"
+								required="true"
+								requiredMessage="Descrição obrigatório!"
+                    		    validatorMessage="Descrição não pode ser superior a 255!">
+                    		<f:validateLength maximum="255"/>
+                    		
+							</p:inputTextarea>	
+							
+						</h:panelGrid>
+					</p:layoutUnit>
+
+					<p:layoutUnit position="center">
+						<p:dataTable var="project" value="#{projectManagedBean.projectList}"
+							scrollable="true" scrollHeight="250" 
+							>
+						
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Projeto" />
+								</f:facet>
+								<h:outputText value="#{project.name}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Descrição" />
+								</f:facet>
+								<h:outputText value="#{project.description}" />
+							</p:column>
+
+							<f:facet name="footer"> 
+							No total Existem #{projectManagedBean.getLengthListProject()} Projetos.
+							</f:facet>
+						</p:dataTable>
+							
+					</p:layoutUnit>
+
+					<p:layoutUnit position="south" size="60">
+						<h:panelGrid columns="3">
+							<p:commandButton value="Salvar" icon="fa fa-fw fa-save"
+								actionListener="#{projectManagedBean.save}" update="func" onsuccess="location.reload();"/>
+
+							<p:commandButton value="Cancelar" icon="fa fa-fw fa-backward" onsuccess="location.reload(); " />
+							
+							<p:commandButton  value="Documentação" icon="fa fa-fw fa-mortar-board" type="button"/>
+ 
+						</h:panelGrid>
+					</p:layoutUnit>
+
+				</p:layout>
+			</p:panel>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>

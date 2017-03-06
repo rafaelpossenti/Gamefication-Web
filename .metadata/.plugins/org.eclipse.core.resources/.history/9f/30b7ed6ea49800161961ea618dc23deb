@@ -1,0 +1,77 @@
+package ejb;
+
+import java.util.List;
+
+import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import com.softmap.model.AuditLog;
+import com.softmap.model.Customer;
+
+/**
+ * Session Bean implementation class GeneralRegister
+ */
+@Stateless
+@LocalBean
+public class GeneralRegister {
+
+	@PersistenceContext
+	private EntityManager em; 
+	
+	@EJB
+	private AuditLogEJB auditLogEJB;
+	/**
+     * Default constructor. 
+     */
+    public GeneralRegister() {
+        // TODO Auto-generated constructor stub
+    }
+    
+    public Customer createSampleCustomer(){
+    	   AuditLog auditLog = auditLogEJB.createAuditLog("Criando customer padrão");
+    	   Customer customer = new Customer();
+    	   
+    	   customer.setAddress("<ENDEREÇO>");
+    	   customer.setCity("<CIDADE>");
+    	   customer.setCompany("<EMPRESA>");
+    	   customer.setCountry("BRA");
+    	   customer.setState("SC");
+    
+    	   customer = em.merge(customer);
+    	   
+    	   auditLogEJB.markSuccessAuditLog(auditLog);
+    	   return customer;
+    }
+    
+    public void remove(Customer customer){
+    	 em.remove(em.merge(customer));
+    }
+    
+    public Customer findOrUpdate(Customer customer){
+    	AuditLog auditLog = auditLogEJB.createAuditLog("Atualizando customer #" + customer.getId());
+    	Customer result = em.merge(customer); 
+    	auditLogEJB.markSuccessAuditLog(auditLog);
+    	return result;
+    }
+    
+    public List<Customer> listCustomers(){
+    	Query query = em.createNamedQuery("Customer.findAll");
+        return  query.getResultList();	
+    }
+    
+    public Customer findCustomerById(Long id){
+    	return em.find(Customer.class, id);
+    }
+    
+    public Customer findCustomerByName(String companyName){
+    	Query query = em.createQuery("SELECT c FROM Customer c WHERE c.company = :company");
+    	query.setParameter("company", companyName);
+    	return (Customer) query.getSingleResult();
+    }
+    
+
+}

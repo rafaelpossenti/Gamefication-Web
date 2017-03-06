@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+
+<ui:composition template="/template/menu.xhtml">
+	
+	<ui:define name="javascript">
+		<title>Funcionarios</title>
+		<script type="text/javascript">
+    	</script>  	
+	</ui:define>		
+
+	<ui:define name="conteudo">
+
+		<h:form id="form">
+			<p:dataGrid var="staff" value="#{staffManagedBean.staffList}" columns="3"
+				layout="grid" rows="12" paginator="true" id="staffs"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="6,12,16">
+
+				<f:facet name="header"> Equipe </f:facet>
+
+				<p:panel header="#{staff.id}" style="text-align:center">
+					
+					<h:panelGrid columns="1" style="width:100%">
+						
+						<p:graphicImage name="images/#{staff.occupation}.png" />
+						<h:outputText value="#{staff.name}" />
+
+						<p:commandLink update=":form:staffDetail"
+							oncomplete="PF('staffDialog').show()" title="View Detail">
+							<h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+							<f:setPropertyActionListener value="#{staff}" target="#{staffManagedBean.selectedStaff}" />
+						</p:commandLink>
+					</h:panelGrid>
+				</p:panel>
+			</p:dataGrid>
+
+               
+			<p:dialog header="Perfil	" widgetVar="staffDialog" modal="true"
+					  showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="staffDetail" style="text-align:center;">
+					<p:panelGrid columns="2"
+						rendered="#{not empty staffManagedBean.currentStaff}"
+						columnClasses="label,value">
+						<f:facet name="header">
+							<p:graphicImage name="images/#{staffManagedBean.currentStaff.occupation}.png" />
+						</f:facet>
+
+						<h:outputText value="Nome:" />
+						<h:outputText value="#{staffManagedBean.currentStaff.name}" />
+                        
+                        <h:outputText value="Level:" />
+						<h:outputText value="#{staffManagedBean.currentStaff.level}" />
+						
+						<h:outputText value="Pontos:" />
+						<h:outputText value="#{staffManagedBean.currentStaff.point}" />
+						
+						 
+                        <h:outputText    value="Descrição:" />
+                		<p:inputTextarea     value="#{staffManagedBean.currentStaff.description}" 
+                                	         rows="7" cols="50"/>
+                        
+                        
+                        <h:outputText value="Cargo:" />
+                        <h:outputText value="#{staffManagedBean.currentStaff.occupation}"/>
+						
+						
+                        <h:outputText value="Idade:" />
+						<h:inputText value="#{staffManagedBean.currentStaff.age}" />
+                            
+                        <h:outputText value="Sexo:" />
+						<h:outputText id="sexField" value="#{staffManagedBean.currentStaff.sex}" />
+                            
+						<h:outputText value="E-mail:" />
+						<h:inputText  value="#{staffManagedBean.currentStaff.email}" />
+                        
+                        <h:outputText value="Telefone:" />
+						<h:inputText value="#{staffManagedBean.currentStaff.phone}" />
+                        
+                        <h:outputText value="Endereço:" />
+						<h:inputText value="#{staffManagedBean.currentStaff.address}" />
+
+					</p:panelGrid>
+					<br/>
+					<p:commandButton value="Salvar"  onclick="PF('staffDialog').hide()"
+					     actionListener="#{staffManagedBean.saveAndNew}" onsuccess="location.reload();" />  
+					<p:commandButton value="Deletar"
+						actionListener="#{staffManagedBean.delete}" onclick="PF('staffDialog').hide()" 
+						onsuccess="location.reload();"/>
+					<p:commandButton value="Cancelar" type="button" onclick="PF('staffDialog').hide()" />						
+				</p:outputPanel>
+			</p:dialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

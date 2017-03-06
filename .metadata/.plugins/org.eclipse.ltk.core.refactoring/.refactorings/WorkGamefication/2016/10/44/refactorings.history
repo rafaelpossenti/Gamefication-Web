@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;WorkGamefication/WebContent/Task.xhtml&apos; to &apos;listTask.xhtml&apos;" description="Rename resource &apos;Task.xhtml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/Task.xhtml" name="listTask.xhtml" stamp="1477515778054" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;WorkGamefication/WebContent/Task.xhtml&apos; to &apos;task.xhtml&apos;" description="Rename resource &apos;Task.xhtml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/Task.xhtml" name="task.xhtml" stamp="1477517112168" updateReferences="true"/>
+</session>
