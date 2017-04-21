@@ -1,13 +1,11 @@
 Gamefication Web
 ==================
 
-##Sobre
-O projeto tem como objetivo aplicar técnicas de gameficação em pequenas equipes de desenvolvimento .
+## Aboout
+The project has the purpose of apply gamefications technical in small teams of development indeed increase the productivity. 
 
 
-
-
-##Telas
+## Screenshot
 
   ![Team](https://github.com/rafaelpossenti/Gamefication-Web/blob/master/screenshot/team.png)
   ![Team](https://github.com/rafaelpossenti/Gamefication-Web/blob/master/screenshot/task.png)
