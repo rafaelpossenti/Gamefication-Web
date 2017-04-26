@@ -1,8 +1,18 @@
 Gamefication Web
 ==================
 
-## Aboout
+## About
 The project has the purpose of apply gamefications technical in small teams of development indeed increase the productivity. 
+
+## Technical Specifications
++ J2E
++ JPA
++ EJB
++ JSF
++ Bootstrap/CSS/JS
++ Glassfish Server
++ PostgresSQL
+
 
 
 ## Screenshot
