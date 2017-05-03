@@ -14,7 +14,8 @@ Built an application that applies elements of game playing to increase productiv
 + PostgresSQL
 
 
-##Directory Structure 
+## Directory Structure 
+
   ```
  \
  |--EJB/build/classes/
