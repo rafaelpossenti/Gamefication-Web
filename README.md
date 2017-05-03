@@ -1,4 +1,4 @@
-Gamefication Web
+Gamification Web
 ==================
 
 ## About
