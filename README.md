@@ -2,7 +2,7 @@ Gamefication Web
 ==================
 
 ## About
-The project has the purpose of apply gamefications technical in small teams of development indeed increase the productivity. 
+Built an application that applies elements of game playing to increase productivity of small development teams.
 
 ## Technical Specifications
 + J2E
@@ -14,17 +14,3 @@ The project has the purpose of apply gamefications technical in small teams of d
 + PostgresSQL
 
 
-
-## Screenshot
-
-  ![Team](https://github.com/rafaelpossenti/Gamefication-Web/blob/master/screenshot/team.png)
-  ![Team](https://github.com/rafaelpossenti/Gamefication-Web/blob/master/screenshot/task.png)
-  ![Team](https://github.com/rafaelpossenti/Gamefication-Web/blob/master/screenshot/staff.png)
-  ![Team](https://github.com/rafaelpossenti/Gamefication-Web/blob/master/screenshot/dashboard.png)
-  ![Team](https://github.com/rafaelpossenti/Gamefication-Web/blob/master/screenshot/contact.png)
-  
-
-  
-  
-
-  
