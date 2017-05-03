@@ -48,7 +48,7 @@ Built an application that applies elements of game playing to increase productiv
    |--TaskManagedBean.java
   |--model
   \
-   |--~~ConexaoDAO.java~~
+   |-- ~~ConexaoDAO.java~~
    
  |--WorkGamefication/WebContent/ 
  \
