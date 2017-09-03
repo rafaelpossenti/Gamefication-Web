@@ -8,9 +8,8 @@ Build an application that applies elements of game playing to increase productiv
 + J2E
 + JPA
 + EJB
-+ JSF
++ JSF2
 + Bootstrap/CSS/JS
-+ Glassfish Server
 + PostgresSQL
 
 
